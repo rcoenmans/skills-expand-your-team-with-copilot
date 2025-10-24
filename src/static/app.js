@@ -607,10 +607,10 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="social-share">
         <span class="share-label">Share:</span>
-        <button class="share-button facebook-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" title="Share on Facebook" aria-label="Share ${name} on Facebook">
+        <button class="share-button facebook-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" title="Share on Facebook" aria-label="Share ${name} on Facebook">
           <span class="share-icon" aria-hidden="true">📘</span>
         </button>
-        <button class="share-button twitter-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" title="Share on Twitter" aria-label="Share ${name} on Twitter">
+        <button class="share-button twitter-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" title="Share on Twitter" aria-label="Share ${name} on Twitter">
           <span class="share-icon" aria-hidden="true">🐦</span>
         </button>
         <button class="share-button email-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" title="Share via Email" aria-label="Share ${name} via Email">
