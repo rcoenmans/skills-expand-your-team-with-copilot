@@ -607,17 +607,17 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="social-share">
         <span class="share-label">Share:</span>
-        <button class="share-button facebook-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" title="Share on Facebook">
-          <span class="share-icon">📘</span>
+        <button class="share-button facebook-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" title="Share on Facebook" aria-label="Share ${name} on Facebook">
+          <span class="share-icon" aria-hidden="true">📘</span>
         </button>
-        <button class="share-button twitter-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" title="Share on Twitter">
-          <span class="share-icon">🐦</span>
+        <button class="share-button twitter-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" title="Share on Twitter" aria-label="Share ${name} on Twitter">
+          <span class="share-icon" aria-hidden="true">🐦</span>
         </button>
-        <button class="share-button email-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" title="Share via Email">
-          <span class="share-icon">✉️</span>
+        <button class="share-button email-share" data-activity="${name}" data-description="${details.description.replace(/"/g, '&quot;')}" data-schedule="${formattedSchedule.replace(/"/g, '&quot;')}" title="Share via Email" aria-label="Share ${name} via Email">
+          <span class="share-icon" aria-hidden="true">✉️</span>
         </button>
-        <button class="share-button copy-link" data-activity="${name}" title="Copy link to clipboard">
-          <span class="share-icon">🔗</span>
+        <button class="share-button copy-link" data-activity="${name}" title="Copy link to clipboard" aria-label="Copy link to ${name} to clipboard">
+          <span class="share-icon" aria-hidden="true">🔗</span>
         </button>
       </div>
       <div class="activity-card-actions">
@@ -661,9 +661,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailBtn = activityCard.querySelector(".email-share");
     const copyLinkBtn = activityCard.querySelector(".copy-link");
 
-    facebookBtn.addEventListener("click", () => shareOnFacebook(name, details.description));
-    twitterBtn.addEventListener("click", () => shareOnTwitter(name, details.description));
-    emailBtn.addEventListener("click", () => shareViaEmail(name, details.description, formattedSchedule));
+    facebookBtn.addEventListener("click", (e) => {
+      const activityName = e.currentTarget.dataset.activity;
+      const description = e.currentTarget.dataset.description;
+      shareOnFacebook(activityName, description);
+    });
+    
+    twitterBtn.addEventListener("click", (e) => {
+      const activityName = e.currentTarget.dataset.activity;
+      const description = e.currentTarget.dataset.description;
+      shareOnTwitter(activityName, description);
+    });
+    
+    emailBtn.addEventListener("click", (e) => {
+      const activityName = e.currentTarget.dataset.activity;
+      const description = e.currentTarget.dataset.description;
+      const schedule = e.currentTarget.dataset.schedule;
+      shareViaEmail(activityName, description, schedule);
+    });
+    
     copyLinkBtn.addEventListener("click", () => copyLinkToClipboard(name));
 
     activitiesList.appendChild(activityCard);
