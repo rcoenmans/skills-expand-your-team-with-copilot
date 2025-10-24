@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.toggle("dark-mode");
     
     if (document.body.classList.contains("dark-mode")) {
-      themeIcon.textContent = "☀️"; // Sun icon for light mode
+      themeIcon.textContent = "☀️"; // Sun icon to switch to light mode
       localStorage.setItem("darkMode", "enabled");
     } else {
-      themeIcon.textContent = "🌙"; // Moon icon for dark mode
+      themeIcon.textContent = "🌙"; // Moon icon to switch to dark mode
       localStorage.setItem("darkMode", "disabled");
     }
   });
